@@ -14,14 +14,11 @@ def brightness_to_ascii(brightness: int) -> str:
     return ascii_chars[idx]
 
 
-MATRIX_GREEN = "\033[32m"
-RESET = "\033[0m"
-
-
-def print_matrix(matrix):
-    print(MATRIX_GREEN)
+def print_ascii_image(matrix):
+    ascii_string = ""
     for row in matrix:
         for char in row:
-            print(char * 3, end="")
-        print("")
-    print(RESET)
+            ascii_string += char * 3
+        ascii_string += "\n"
+
+    print(ascii_string)

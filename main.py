@@ -32,4 +32,4 @@ for x in range(width):
         ascii_matrix[y][x] = helpers.brightness_to_ascii(
             brightness_matrix[y][x])
 
-helpers.print_matrix(ascii_matrix)
+helpers.print_ascii_image(ascii_matrix)
