@@ -3,8 +3,8 @@ import numpy as np
 import helpers
 
 # Load image
-img = Image.open("test.jpg")
-img = img.resize((160, 120))
+img = Image.open("test/test.jpg")
+img = img.resize((320, 240))
 
 img_matrix = np.array(img, dtype=np.int16)
 height = img_matrix.shape[0]
