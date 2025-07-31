@@ -1,10 +1,17 @@
 from PIL import Image
 import numpy as np
 import helpers
+import argparse
+
+parser = argparse.ArgumentParser(
+    description="A program that converts an image to ASCII")
+parser.add_argument("filename", help="The path of the image to convert")
+
+args = parser.parse_args()
 
 # Load image
-img = Image.open("test/test.jpg")
-img = img.resize((320, 240))
+img = Image.open(args.filename)
+img = img.resize((160, 120))
 
 img_matrix = np.array(img, dtype=np.int16)
 height = img_matrix.shape[0]
