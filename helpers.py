@@ -1,4 +1,7 @@
 import math
+from rich.console import Console
+
+console = Console()
 
 
 def convert_rgb_to_brightness(rgb_tuple: tuple[int, int, int]) -> int:
@@ -21,4 +24,4 @@ def print_ascii_image(matrix):
             ascii_string += char * 3
         ascii_string += "\n"
 
-    print(ascii_string)
+    console.out(ascii_string, style="#003B00 on #000000", highlight=False)
