@@ -4,9 +4,20 @@ from rich.console import Console
 console = Console()
 
 
-def convert_rgb_to_brightness(rgb_tuple: tuple[int, int, int]) -> int:
-    # Formula: Brightness = (R + G + B) / 3
-    brightness = (rgb_tuple[0] + rgb_tuple[1] + rgb_tuple[2]) // 3
+def convert_rgb_to_brightness(rgb_tuple: tuple[int, int, int], algorithm="average") -> int:
+    red = rgb_tuple[0]
+    green = rgb_tuple[1]
+    blue = rgb_tuple[2]
+
+    brightness = None
+
+    if algorithm == "average":
+        brightness = (red + green + blue) // 3
+    elif algorithm == "min_max":
+        brightness = (max(red, green, blue) + min(red, green, blue)) // 2
+    else:
+        brightness = math.floor(0.21 * red + 0.72 * green + 0.07 * blue)
+
     return brightness
 
 

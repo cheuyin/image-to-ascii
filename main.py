@@ -6,6 +6,8 @@ import argparse
 parser = argparse.ArgumentParser(
     description="A program that converts an image to ASCII")
 parser.add_argument("filename", help="The path of the image to convert")
+parser.add_argument(
+    "--algorithm", choices=["average", "min_max", "luminosity"], default="average", help="The algorithm used to create the ASCII image")
 
 args = parser.parse_args()
 
@@ -23,7 +25,7 @@ brightness_matrix = np.array([[0] * width] * height, dtype=np.uint8)
 for x in range(width):
     for y in range(height):
         brightness_matrix[y][x] = helpers.convert_rgb_to_brightness(
-            img_matrix[y][x])
+            img_matrix[y][x], args.algorithm)
 
 # Create ASCII matrix
 ascii_matrix = np.array([[None] * width] * height)
